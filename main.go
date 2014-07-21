@@ -41,6 +41,22 @@ func main() {
 				}
 			},
 		},
+		{
+			Name:      "zsh",
+			ShortName: "z",
+			Usage:     "zsh conf",
+			Action: func(c *cli.Context) {
+				command := c.Args()[0]
+				switch command {
+				case "install":
+					mytool.InstallZshConf()
+				case "update":
+					mytool.UpdateZshConf()
+				default:
+					fmt.Println("Unknown command: ", command)
+				}
+			},
+		},
 	}
 	app.Run(os.Args)
 }
