@@ -3,21 +3,21 @@ package mytool
 import (
 	"fmt"
 	"os"
-	"os/exec"
 	"path"
+
+	"../utils"
 )
 
+var vimDirPath string = path.Join(os.Getenv("HOME"), ".vim")
+
 func InstallVimConf() {
-	vimDirPath := path.Join(os.Getenv("HOME"), ".vim")
 	_, err := os.Stat(vimDirPath)
 	if err == nil {
 		fmt.Println("already exits!")
 		return
 	}
-	cmd := exec.Command("git", "clone", "git@github.com:sakuma/dot.vim.git", vimDirPath)
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-	if err = cmd.Run(); err != nil {
+	err = utils.Execute("git", "clone", "git@github.com:sakuma/dot.vim.git", vimDirPath)
+	if err != nil {
 		fmt.Println("Error: 'git clone'")
 		return
 	}
@@ -28,27 +28,22 @@ func InstallVimConf() {
 		return
 	}
 
-	cmd = exec.Command("./vimconf_ctl", "install")
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-	if err = cmd.Run(); err != nil {
+	err = utils.Execute("./vimconf_ctl", "install")
+	if err != nil {
 		fmt.Println("Error: 'vimconf_ctl install'")
 		return
 	}
 }
 
 func UpdateVimConf() {
-	vimDirPath := path.Join(os.Getenv("HOME"), ".vim")
 	err := os.Chdir(vimDirPath)
 	if err != nil {
 		fmt.Println("Error: chdir to vim conf dir")
 		return
 	}
 
-	cmd := exec.Command("./vimconf_ctl", "update")
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-	if err = cmd.Run(); err != nil {
+	err = utils.Execute("./vimconf_ctl", "update")
+	if err != nil {
 		fmt.Println("Error: 'vimconf_ctl update'")
 		return
 	}
