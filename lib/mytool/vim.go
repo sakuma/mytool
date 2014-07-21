@@ -1,4 +1,4 @@
-package vim
+package mytool
 
 import (
 	"fmt"

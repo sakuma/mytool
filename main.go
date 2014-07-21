@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
+	"./lib/mytool"
 	"github.com/codegangsta/cli"
-	"github.com/sakuma/mytool/lib/vim"
 )
 
 func main() {
@@ -33,9 +33,9 @@ func main() {
 				command := c.Args()[0]
 				switch command {
 				case "install":
-					vim.InstallVimConf()
+					mytool.InstallVimConf()
 				case "update":
-					vim.UpdateVimConf()
+					mytool.UpdateVimConf()
 				default:
 					fmt.Println("Unknown command: ", command)
 				}
