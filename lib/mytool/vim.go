@@ -5,7 +5,7 @@ import (
 	"os"
 	"path"
 
-	"../utils"
+	"github.com/sakuma/mytool/lib/utils"
 )
 
 var vimDirPath string = path.Join(os.Getenv("HOME"), ".vim")

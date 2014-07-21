@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"./lib/mytool"
 	"github.com/codegangsta/cli"
+	"github.com/sakuma/mytool/lib/mytool"
 )
 
 func main() {

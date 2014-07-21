@@ -5,7 +5,7 @@ import (
 	"os"
 	"path"
 
-	"../utils"
+	"github.com/sakuma/mytool/lib/utils"
 )
 
 // var zshDirPath string = path.Join(os.Getenv("HOME"), ".zsh.d")
